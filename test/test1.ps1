@@ -26,7 +26,7 @@ catch {
 Write-Host "Connecting telemetry client..."
 Connect-ApplicationInsightsTelemetryClient -InstrumentationKey $InstrumentationKey -Verbose
 
-"My event > Send-TrackEvent" | Send-TrackEvent -Passthru | Write-Output
+"My event > Send-TrackEvent" | Send-TrackEvent -Passthru -FunctionName "MyTestFunction" | Write-Output
 
 Write-Host "divide by zero error in script"
 try {
