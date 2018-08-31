@@ -45,9 +45,11 @@ namespace ApplicationInsights_PowerShell
         // This method will be called for each input received from the pipeline to this cmdlet; if no input is received, this method is not called
         protected override void ProcessRecord()
         {
+            // TODO: custom events as json input, ex. Found 960 users in AAD should be - EventName = Found users in AAD and a custom input @{"UsersFound" = 960}
+            MyTelemetryClient.PopulateProperties(_properties, _functionName);
             //WriteVerbose("Process!");
             _telemetryClient.TrackEvent(
-                EventName
+                EventName, _properties
             );
         }
 
